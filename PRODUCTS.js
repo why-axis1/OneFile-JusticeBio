@@ -974,7 +974,7 @@ let products = [
       
       {
         name: "Bubble Machine Guns",
-        link: ["bubble machine guns", "machine guns", "guns", "bubbles", "gifts"],
+        keywords: ["bubble machine guns", "machine guns", "guns", "bubbles", "gifts"],
         image: "bubble-gun.jpg",
         link: "https://www.amazon.com/dp/B09TVNMCS1?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B09TVNMCS1&asc_item-id=amzn1.ideas.1X3MUA5F08D4X&ref_=aip_sf_list_spv_ons_mixed_d_asin&th=1"
       },
@@ -987,7 +987,7 @@ let products = [
       {
         name: "Hoop Mug",
         keywords: ["mug", "drinks", "hoop", "basketball", "coffee", "hot chocolate", "gifts"],
-        iamge: "hoop-mug.jpg",
+        image: "hoop-mug.jpg",
         link: "https://www.amazon.com/dp/B00KOQ560E?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B00KOQ560E&asc_item-id=amzn1.ideas.1X3MUA5F08D4X&ref_=aip_sf_list_spv_ons_mixed_d_asin"
       },
       {

@@ -14,3 +14,6 @@ You must add your image folders path to the respective string with a slash at th
 /Users/your_user/Documents/VScode/JusticeBioFinal.html/Product-Images/
 
 This string will be concatenated with each product's image name
+
+All images have been shared in the following drive: 
+https://drive.google.com/drive/folders/1dZWtkJtDw3lhgENNOqw3gbkboR2c0Kbm?usp=sharing

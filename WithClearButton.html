@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <title>Product Search</title>
+  <style>
+    body {
+    background-color: #f8f0e9;
+    }
+
+    .round-center-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    top: 10px;
+    position: relative;
+    transition: scale 0.3s;
+
+    }
+    .round-center-img:hover{
+    scale: 1.1;
+    }
+
+    .image-text {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 5px;
+    color: #2c5552;
+    }
+    .round-left-img {
+    border-radius: 0%;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0);
+    background-color: none;
+    }
+    .my-button {
+    position: relative;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100px;
+    background-color: #2c5552;
+    color: #f8f0e9;
+    cursor: pointer;
+    padding-left: 60px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.1);
+    animation: scaleUpDown 1s ease-in infinite;
+    transition: scale 0.3s;
+    }
+
+    @keyframes scaleUpDown {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.01;
+    }
+
+    100% {
+        scale: 1;
+    }
+    
+    }
+
+    .search-text {
+    margin-top:30px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: #2c5552;
+    }
+    
+
+    /* Add some basic styling for the search container */
+    #search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom:10px;
+    }
+    /* Add some basic styling for the search input */
+    #search-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0px;
+    padding: 10px;
+    font-size: 16px;
+    color: gray;
+    border-radius: 5px;
+    border: none;
+    margin-right: 0px;
+    margin-top:0px;
+    box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.1);
+    width: 260px;
+    }
+
+    /* Add some basic styling for the results container */
+    #results-container {
+    padding-top: 10px;
+    width: 300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-gap: 20px;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    }
+
+    #clear-button {
+      position: absolute;
+      transform: translateX(120px);
+      border: none;
+      display: inline-block;
+      content: "\00d7";
+      width: 40px;
+      height: 30px;
+      background-color: white;
+      color: none;
+      box-shadow: none;
+
+    }
+    
+    
+
+    /* Add some basic styling for the individual result divs */
+    .result {
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    background-color: white;
+    }
+    img {
+    border-radius: 25%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    scale: 1;
+    transition: scale 0.3s;
+    }
+    #image-results {
+      border-radius: 25%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.1);
+      scale: 1;
+      transition: scale 0.3s;
+    }
+    #image-results:hover {
+      scale: 1.1;
+    }
+
+  </style>
+</head>
+<body onload="loadAllProducts()">
+  <img src="https://images-na.ssl-images-amazon.com/images/S/influencer-profile-image-prod/logo/justicethetutor_1666114557073_original._CR154,146,465,465_._FMjpg_.jpeg" class="round-center-img">
+  <p class="image-text">@justicebuys</p>
+    <a href="https://www.amazon.com/shop/justicethetutor" class="my-button">
+      <img src="https://companieslogo.com/img/orig/AMZN-e9f942e4.png?t=1632523695" class="round-left-img">
+      ALL Amazon Products
+    </a>
+  <a href="https://givehugz.co" class="my-button">
+    <img src="https://cdn.shopify.com/s/files/1/0666/9130/1682/files/Hugz_Hero.png?v=1669050637&width=2000" class="round-left-img">
+    Weighted Stuffed Animals
+</a>
+  <p class="search-text">Search for all products below</p>
+  <div id="search-container">
+    <input type="text" id="search-input" onkeyup="showResults(this.value)" placeholder="Enter search keyword">
+    <button id="clear-button"><img src="https://static.vecteezy.com/system/resources/thumbnails/009/344/493/small/x-transparent-free-png.png"></button>
+  </div>
+  <div id="results-container">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/fuzzysearch@1.0.3/index.js"></script>
+  <script src="PRODUCTS.js"></script>
+
+  <script>
+
+    function searchByKeywords(searchTerm) {
+      let searchResults = [];
+      searchTerm = searchTerm.toLowerCase();
+      for (let i = 0; i < products.length; i++) {
+          for (let j = 0; j < products[i].keywords.length; j++) {
+              if (fuzzysearch(searchTerm, products[i].keywords[j].toLowerCase())) {
+                  searchResults.push(products[i]);
+                  break;
+              }
+          }
+      }
+      return searchResults;
+    }
+
+    document.getElementById("clear-button").onclick = function(){
+      document.getElementById("search-input").value = ""
+      loadAllProducts()
+    }
+  
+    function showResults(searchTerm) {
+      let searchResults = searchByKeywords(searchTerm.toLowerCase());
+      let results = ""
+      for (let i = 0; i < searchResults.length; i++) {
+        results += `<div id="image-results" class="result" onclick="window.location.href='${searchResults[i].link}';">
+          <img src="${searchResults[i].image}" width="100" height="100">
+        </div>`;
+      }
+      if (searchResults.length == 0){
+        results = "No results found"
+      }
+      document.getElementById("results-container").innerHTML = results;
+    }
+
+
+    function loadAllProducts() {
+      let results = ""
+      for (let i = 0; i < products.length; i++) {
+        results += `<div id="image-results" class="result" onclick="window.location.href='${products[i].link}';">
+          <img src="${products[i].image}" width="100" height="100">
+        </div>`;
+      }
+      document.getElementById("results-container").innerHTML = results;
+    }
+    </script>
+</body>
+</html>

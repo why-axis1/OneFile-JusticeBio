@@ -11,7 +11,7 @@ for(let product of products){
     
 You must add your image folders path to the respective string with a slash at the end, eg.:
 
-/Users/your_user/Documents/VScode/JusticeBioFinal.html/Product-Images/
+/Users/your_user/Documents/VScode/JusticeBioFinal/Product-Images/
 
 This string will be concatenated with each product's image name
 

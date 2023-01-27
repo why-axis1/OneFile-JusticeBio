@@ -173,46 +173,8 @@
   <div id="results-container">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/fuzzysearch@1.0.3/index.js"></script>
+  <script src="PRODUCTS.js ></script>
   <script>
-    let products = [
-      {
-        keywords: ["tag", "apple", "air tag", "find", "apple air tag"],
-        image: "https://m.media-amazon.com/images/I/713xuNx00oS._AC_SX425_.jpg",
-        link: "https://www.amazon.com/dp/B0933BVK6T?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B0933BVK6T&asc_item-id=amzn1.ideas.21RWQOANTALWI&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
-      },
-      {
-        keywords: ["soap", "cleaning", "kitchen gadget", "kitchen"],
-        image: "https://m.media-amazon.com/images/I/81oKKDQZUUL._AC_SX679_.jpg" ,
-        link: "https://www.amazon.com/dp/B07Y45TVC2?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B07Y45TVC2&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin" 
-      },
-      {
-        keywords: ["soda", "dispenser", "can", "organize", "red"],
-        image: "https://m.media-amazon.com/images/I/91gOVsUe5OL._AC_SX679_.jpg",
-        link: "https://www.amazon.com/dp/B07V499VVS?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B07V499VVS&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
-      },
-      {
-        keywords: ["cactus", "toilet", "plunger", "toilet plunger", "plant", "cleaning", "bathroom"],
-        image: "https://m.media-amazon.com/images/I/51YTvPdGH5L.__AC_SX300_SY300_QL70_FMwebp_.jpg",
-        link: "https://www.amazon.com/dp/B0B85ZPNPM?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B0B85ZPNPM&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
-      },
-      {
-        keywords: ["penguin", "egg", "cooker", "kitchen", "egg cooker"],
-        image: "https://m.media-amazon.com/images/I/71cdtW2e4AL._AC_SX679_.jpg",
-        link:"https://www.amazon.com/dp/B07WD8MF7W?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B07WD8MF7W&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
-      },
-      {
-        keywords: ["basket", "compact", "collapsible", "laundry", "plastic", "organize"],
-        image: "https://m.media-amazon.com/images/I/61+bJMp+8GL._AC_SX466_.jpg",
-        link: "https://www.amazon.com/dp/B0882ZPRF7?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B0882ZPRF7&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ons_d_asin&th=1"
-      },
-      {
-        keywords: ["stirrer", "automatic", "pan stirrer", "pan", "rotating", "kitchen"],
-        image: "https://m.media-amazon.com/images/I/51JW0bsGhEL._AC_SX679_.jpg",
-        link: "https://www.amazon.com/dp/B008OWT95S?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B008OWT95S&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
-      }
-      
-    ];
-  
     function searchByKeywords(searchTerm) {
       let searchResults = [];
       searchTerm = searchTerm.toLowerCase();

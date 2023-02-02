@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <title>Product Search</title>
+  <style>
+
+    html {
+      height: 100%;
+    }
+
+    body {
+    background-color: #f8f0e9;
+    padding: 30px;
+    padding-top: 0;
+    text-align: center;
+
+    }
+    .header {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+      margin-top: 5em;
+      padding: 16px 0;
+    }
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: lightgray;
+    opacity: 1; /* Firefox */
+    }
+
+    .profile-image {
+    width: 35%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    transition: scale 0.3s;
+
+    }
+    .profile-image:hover{
+    scale: 1.1;
+    }
+
+    .username-text {
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 5px;
+    color: #2c5552;
+    }
+    
+    .link-container {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+    .link-button {
+      padding: 50px;
+      text-align: left;
+      text-decoration: none;
+      font-size: 2.4em;
+      border-radius: 100px;
+      background-color: #2c5552;
+      color: #f8f0e9;
+      cursor: pointer;
+      padding-left: 160px;
+      font-family: 'Open Sans', sans-serif;
+      box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.1);
+      transition: scale 0.9s;
+      animation: scaleUpDown 2s ease-out infinite;
+    }
+
+    .hugz-button {
+      padding: 50px;
+      text-align: left;
+      text-decoration: none;
+      font-size: 2.4em;
+      border-radius: 100px;
+      background-color: #2c5552;
+      color: #f8f0e9;
+      cursor: pointer;
+      padding-left: 160px;
+      font-family: 'Open Sans', sans-serif;
+      box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.1);
+      animation: placeholder 2s ease-out infinite;
+    }
+
+    .link-button-image {
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      position: absolute;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0);
+      background-color: none;
+    }
+    
+
+    @keyframes scaleUpDown {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.01;
+    }
+
+    100% {
+        scale: 1;
+    }
+    
+    }
+
+    @keyframes placeholder {
+    100% {scale: 1;}
+    }
+
+    .search-text {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 2.5em;
+    font-family: 'Open Sans', sans-serif;
+    color: #2c5552;
+    }
+    
+
+    /* Add some basic styling for the search container */
+    .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom:10px;
+    
+   
+    }
+    input {
+      outline-width: 0;
+
+    }
+    input:focus {
+      outline-width: 0;
+    }
+
+    /* Add some basic styling for the search input */
+    #search-input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+    padding-left: 45px;
+    font-size: 2.4em;
+    color: darkgray;
+    border-radius: 100px;
+    border: none;
+    margin-right: 0px;
+    box-shadow: 1px 6px 10px 1px rgba(0, 0, 0, 0.1);
+  }
+
+
+
+    /* Add some basic styling for the results container */
+    #results-container {
+    padding-top: 20px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    min-height: 1000px;
+    }
+
+    #clear-button {
+      position: absolute;
+      right: 0;
+      margin-right: 60px;
+      /* transform: translateX(=120px); */
+      border: none;
+      /* display: inline-block; */
+      /* content: "\00d7"; */
+      width: 75px;
+      height: 75px;
+      background-color: transparent;
+      color: none;
+      box-shadow: none;
+
+    }
+    /* Add some basic styling for the individual result divs */
+    .result {
+    width: 280px;
+    height: 280px;
+    border-radius: 20%;
+    background-color: white;
+    box-shadow: 2px 6px 10px 1px rgba(0, 0, 0, 0.1);
+    margin:0;
+
+    }
+
+    img {
+    border-radius: 25%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.1); */
+    scale: 1;
+    transition: scale 0.3s;
+    }
+    /* img:hover {
+    scale: 1.1;
+    } */
+  </style>
+</head>
+<body onload="loadAllProducts()">
+  
+  <section class="header">
+    <img src="https://images-na.ssl-images-amazon.com/images/S/influencer-profile-image-prod/logo/justicethetutor_1666114557073_original._CR154,146,465,465_._FMjpg_.jpeg" class="profile-image">
+    <p class="username-text">@justicebuys</p>
+  </section>
+
+  <section class="link-container">
+    <a href="https://www.amazon.com/shop/justicethetutor" class="link-button">
+      <img src="images/amazon-logo.jpeg" class="link-button-image">
+      ALL Amazon Products
+    </a>
+
+    <a href="https://givehugz.co" class="hugz-button">
+      <img src="images/hugs.jpg" class="link-button-image">
+      Weighted Stuffed Animals
+    </a>
+  </section>
+      
+  
+  
+
+  <p class="search-text">Search for all products below</p>
+  <div id="search-container" class="search-container">
+    <input type="text" outline="0" id="search-input" onkeyup="showResults(this.value)" placeholder="Type keywords like &quot;soap&quot; or &quot;home&quot;" class="middle">
+    <button id="clear-button"><img src="images/clear-button-small.png"></button>
+  </div>
+  <div id="results-container">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/fuzzysearch@1.0.3/index.js"></script>
+  <script src="PRODUCTS.js"></script>
+  <script>
+
+
+    // let products = [
+    //   {
+    //     keywords: ["tag", "apple", "air tag", "travel", "apple air tag"],
+    //     image: "https://m.media-amazon.com/images/I/713xuNx00oS._AC_SX425_.jpg",
+    //     link: "https://www.amazon.com/dp/B0933BVK6T?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B0933BVK6T&asc_item-id=amzn1.ideas.21RWQOANTALWI&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
+    //   },
+    //   {
+    //     keywords: ["soap","sponge","dish", "cleaning", "sink", "kitchen"],
+    //     image: "https://m.media-amazon.com/images/I/81oKKDQZUUL._AC_SX679_.jpg" ,
+    //     link: "https://www.amazon.com/dp/B07Y45TVC2?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B07Y45TVC2&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin" 
+    //   },
+    //   {
+    //     keywords: ["soda", "dispenser", "can", "organize", "fridge"],
+    //     image: "https://m.media-amazon.com/images/I/91gOVsUe5OL._AC_SX679_.jpg",
+    //     link: "https://www.amazon.com/dp/B07V499VVS?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B07V499VVS&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
+    //   },
+    //   {
+    //     keywords: ["cactus", "toilet", "plunger", "scrubber", "cleaning", "bathroom"],
+    //     image: "https://m.media-amazon.com/images/I/51YTvPdGH5L.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+    //     link: "https://www.amazon.com/dp/B0B85ZPNPM?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B0B85ZPNPM&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
+    //   },
+    //   {
+    //     keywords: ["penguin", "egg", "cooker", "kitchen", "egg cooker", "egg holder"],
+    //     image: "https://m.media-amazon.com/images/I/71cdtW2e4AL._AC_SX679_.jpg",
+    //     link:"https://www.amazon.com/dp/B07WD8MF7W?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B07WD8MF7W&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
+    //   },
+    //   {
+    //     keywords: ["basket", "compact", "collapsible", "laundry", "home"],
+    //     image: "https://m.media-amazon.com/images/I/61+bJMp+8GL._AC_SX466_.jpg",
+    //     link: "https://www.amazon.com/dp/B0882ZPRF7?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B0882ZPRF7&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ons_d_asin&th=1"
+    //   },
+    //   {
+    //     keywords: ["stirrer", "automatic", "pan stirrer", "pan", "rotating", "kitchen"],
+    //     image: "https://m.media-amazon.com/images/I/51JW0bsGhEL._AC_SX679_.jpg",
+    //     link: "https://www.amazon.com/dp/B008OWT95S?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B008OWT95S&asc_item-id=amzn1.ideas.13IB4BP3F7I63&ref_=aip_sf_list_spv_ofs_mixed_d_asin"
+    //   }, {
+    //     name: "Hot Sauce key chain",
+    //     keywords: ["hot sauce", "sauce", "keychain", "key", "sriracha", "travel", "siracha", "condiment"],
+    //     image: "/images/product-images/3-charger.jpg",
+    //     link: "https://www.amazon.com/dp/B00X0233WM?linkCode=ssc&tag=onamzjust0cd8-20&creativeASIN=B00X0233WM&asc_item-id=amzn1.ideas.21RWQOANTALWI&ref_=aip_sf_list_spv_ons_mixed_d_asin&th=1"
+    //   }
+      
+    // ];
+  
+
+    function searchByKeywords(searchTerm) {
+      let searchResults = [];
+      searchTerm = searchTerm.toLowerCase();
+      for (let i = 0; i < products.length; i++) {
+          for (let j = 0; j < products[i].keywords.length; j++) {
+              if (fuzzysearch(searchTerm, products[i].keywords[j].toLowerCase())) {
+                  searchResults.push(products[i]);
+                  break;
+              }
+          }
+      }
+      return searchResults;
+    }
+
+    document.getElementById("clear-button").onclick = function(){
+      document.getElementById("search-input").value = ""
+      loadAllProducts()
+    }
+
+
+    function showResults(searchTerm) {
+      let searchResults = searchByKeywords(searchTerm.toLowerCase());
+      let results = ""
+      for (let i = 0; i < searchResults.length; i++) {
+        results += `<div class="result" onclick="window.location.href='${searchResults[i].link}';">
+          <img src="${searchResults[i].image}" width="100" height="100">
+        </div>`;
+      }
+      document.getElementById("results-container").innerHTML = results;
+      // window.scrollTo(0, document.body.scrollHeight);
+
+    }
+    function loadAllProducts() {
+      let results = ""
+      for (let i = 0; i < products.length; i++) {
+        results += `<div class="result" onclick="window.location.href='${products[i].link}';">
+          <img src="${products[i].image}" width="100" height="100">
+        </div>`;
+      }
+      document.getElementById("results-container").innerHTML = results;
+    }
+    </script>
+</body>
+</html>
